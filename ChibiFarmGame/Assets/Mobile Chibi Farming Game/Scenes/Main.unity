@@ -390,7 +390,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 1006490866}
-  playerAnimator: {fileID: 377347266}
   moveSpeed: 50
 --- !u!114 &377347266
 MonoBehaviour:
@@ -405,6 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2124813969463154429}
+  moveSpeedMultiplier: 40
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

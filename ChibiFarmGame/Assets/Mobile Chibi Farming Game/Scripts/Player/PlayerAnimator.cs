@@ -6,6 +6,9 @@ public class PlayerAnimator : MonoBehaviour
 {
     [Header(" Elements ")] 
     [SerializeField] private Animator animator;
+
+    [Header(" Settings ")] 
+    [SerializeField] private float moveSpeedMultiplier;
     
     // Start is called before the first frame update
     void Start()
@@ -23,7 +26,10 @@ public class PlayerAnimator : MonoBehaviour
     {
         if (moveVector.magnitude > 0)
         {
+            animator.SetFloat("moveSpeed", moveVector.magnitude * moveSpeedMultiplier);
             PlayRunAnimation();
+
+            animator.transform.forward = moveVector.normalized;
         }
         else
         {
