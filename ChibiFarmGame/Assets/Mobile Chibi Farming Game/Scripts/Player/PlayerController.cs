@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     [Header(" Elements ")]
     [SerializeField] private MobileJoystick joystick;
+    [SerializeField] private PlayerAnimator playerAnimator;
     private CharacterController characterController;
 
     [Header(" Settings ")] 
@@ -33,5 +34,7 @@ public class PlayerController : MonoBehaviour
         moveVector.y = 0;
         
         characterController.Move(moveVector);
+
+        playerAnimator.ManageAnimations(moveVector);
     }
 }
