@@ -47,8 +47,13 @@ public class PlayerAnimator : MonoBehaviour
         animator.Play("run");
     }
     
-    private void PlaySowAnimation()
+    public void PlaySowAnimation()
     {
-        animator.Play("sow");
+        animator.SetLayerWeight(1,1);
+    }
+
+    public void StopSowAnimation()
+    {
+        animator.SetLayerWeight(1,0);
     }
 }
