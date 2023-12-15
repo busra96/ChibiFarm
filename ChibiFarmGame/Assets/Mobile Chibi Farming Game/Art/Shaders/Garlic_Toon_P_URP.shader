@@ -1,6 +1,6 @@
 // Made with Amplify Shader Editor
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "Guru/Garlic_Toon_P_URP"
+Shader "Garlic_Toon_P_URP"
 {
 	Properties
 	{
