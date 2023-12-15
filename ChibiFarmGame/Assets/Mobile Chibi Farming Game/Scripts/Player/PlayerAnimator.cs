@@ -46,4 +46,9 @@ public class PlayerAnimator : MonoBehaviour
     {
         animator.Play("run");
     }
+    
+    private void PlaySowAnimation()
+    {
+        animator.Play("sow");
+    }
 }
