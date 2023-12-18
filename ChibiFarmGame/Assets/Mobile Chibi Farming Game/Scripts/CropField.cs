@@ -15,4 +15,9 @@ public class CropField : MonoBehaviour
     {
         
     }
+
+    public void SeedsCollidedCallback(Vector3[] seedPositions)
+    {
+        Debug.Log(" crop field received the seed positions, ALPHA BRAVO CGARLIE ECHO FOX ... ");
+    }
 }
