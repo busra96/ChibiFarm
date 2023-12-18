@@ -1,10 +1,11 @@
 using UnityEngine;
 
+
+public enum TieldFieldState { Empty, Sown, Watered}
+
 public class CropTile : MonoBehaviour
 {
-    
-    public enum State { Empty, Sown, Watered}
-    private State state;
+    private TieldFieldState state;
 
     [Header(" Elements ")] 
     [SerializeField] private Transform cropParent;
@@ -12,7 +13,7 @@ public class CropTile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        state = State.Empty;
+        state = TieldFieldState.Empty;
     }
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class CropTile : MonoBehaviour
 
     public void Sow(CropData cropData)
     {
-        state = State.Sown;
+        state = TieldFieldState.Sown;
 
         Crop crop = Instantiate(cropData.cropPrefab, transform.position, Quaternion.identity, cropParent);
         
@@ -31,6 +32,6 @@ public class CropTile : MonoBehaviour
 
     public bool IsEmpty()
     {
-        return state == State.Empty;
+        return state == TieldFieldState.Empty;
     }
 }
