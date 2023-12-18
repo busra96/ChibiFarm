@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6f6a2a9f2a15040a00bee7fceda99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cropParent: {fileID: 469662904025727241}
 --- !u!1 &4024432420931995547
 GameObject:
   m_ObjectHideFlags: 0

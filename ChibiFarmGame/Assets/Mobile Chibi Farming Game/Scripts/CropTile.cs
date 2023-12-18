@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CropTile : MonoBehaviour
 {
     
     public enum State { Empty, Sown, Watered}
-
     private State state;
+
+    [Header(" Elements ")] 
+    [SerializeField] private Transform cropParent;
     
     // Start is called before the first frame update
     void Start()
@@ -21,13 +21,12 @@ public class CropTile : MonoBehaviour
         
     }
 
-    public void Sow()
+    public void Sow(CropData cropData)
     {
         state = State.Sown;
 
-        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        go.transform.position = transform.position;
-        go.transform.localScale = Vector3.one * .5f;
+        Crop crop = Instantiate(cropData.cropPrefab, transform.position, Quaternion.identity, cropParent);
+        
     }
 
     public bool IsEmpty()

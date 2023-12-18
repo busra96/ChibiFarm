@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +6,9 @@ public class CropField : MonoBehaviour
     [Header(" Elements ")] 
     [SerializeField] private Transform tilesParent;
     private List<CropTile> cropTiles = new List<CropTile>();
+
+    [Header(" Settings ")] 
+    [SerializeField] private CropData cropData;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,7 @@ public class CropField : MonoBehaviour
 
     private void Sow(CropTile cropTile)
     {
-        cropTile.Sow();
+        cropTile.Sow(cropData);
     }
 
     private CropTile GetClosestCropTile(Vector3 seedPosition)
