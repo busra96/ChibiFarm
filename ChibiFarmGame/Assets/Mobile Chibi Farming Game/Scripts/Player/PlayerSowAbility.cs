@@ -1,13 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerAnimator))]
+[RequireComponent(typeof(PlayerToolSelector))]
 public class PlayerSowAbility : MonoBehaviour
 {
     [Header(" Elements ")]
     private PlayerAnimator playerAnimator;
+    private PlayerToolSelector playerToolSelector;
 
     [Header(" Settings ")]
     private CropField currentCropField;
@@ -17,23 +17,26 @@ public class PlayerSowAbility : MonoBehaviour
     void Start()
     {
         playerAnimator = GetComponent<PlayerAnimator>();
+        playerToolSelector = GetComponent<PlayerToolSelector>();
 
         SeedParticles.onSeedsCollided += SeedsCollidedCallback;
         CropField.onFullSown += CropFieldFullySownCallback;
+        playerToolSelector.onToolSelected += ToolSelectedCallback;
     }
 
     private void OnDestroy()
     {
         SeedParticles.onSeedsCollided -= SeedsCollidedCallback;
         CropField.onFullSown -= CropFieldFullySownCallback;
+        playerToolSelector.onToolSelected -= ToolSelectedCallback;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ToolSelectedCallback(PlayerToolSelector.Tool selectedTool)
     {
-        
+        if (!playerToolSelector.CanSow())
+            playerAnimator.StopSowAnimation();
     }
-    
+
     private void SeedsCollidedCallback(Vector3[] seedPositions)
     {
         if(currentCropField == null)
@@ -54,9 +57,22 @@ public class PlayerSowAbility : MonoBehaviour
     {
         if (other.CompareTag("CropField") && other.GetComponent<CropField>().IsEmpty())
         {
-            playerAnimator.PlaySowAnimation();
             currentCropField = other.GetComponent<CropField>();
+            EnteredCropField(currentCropField);
+         
         }
+    }
+
+    private void EnteredCropField(CropField cropField)
+    {
+        if(playerToolSelector.CanSow())
+           playerAnimator.PlaySowAnimation();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("CropField"))
+            EnteredCropField(other.GetComponent<CropField>());
     }
 
     private void OnTriggerExit(Collider other)

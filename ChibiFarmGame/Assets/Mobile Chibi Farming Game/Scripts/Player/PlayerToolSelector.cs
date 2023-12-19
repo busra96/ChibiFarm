@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +14,10 @@ public class PlayerToolSelector : MonoBehaviour
 
     [Header(" Settings ")] 
     [SerializeField] private Color SelectToolColor;
-    
+
+
+    [Header(" Actions ")] 
+    public Action<Tool> onToolSelected;
     
     // Start is called before the first frame update
     void Start()
@@ -23,19 +25,28 @@ public class PlayerToolSelector : MonoBehaviour
         SelectTool(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SelectTool(int toolIndex)
     {
         activeTool = (Tool)toolIndex;
 
         for (int i = 0; i < toolImages.Length; i++)
-        {
             toolImages[i].color = i == toolIndex ? SelectToolColor : Color.white;
-        }
+        
+        onToolSelected?.Invoke(activeTool);
+    }
+
+    public bool CanSow()
+    {
+        return activeTool == Tool.Sow;
+    }
+    
+    public bool CanWater()
+    {
+        return activeTool == Tool.Water;
+    }
+    
+    public bool CanHarvest()
+    {
+        return activeTool == Tool.Harvest;
     }
 }
