@@ -62,6 +62,11 @@ public class CropField : MonoBehaviour
             FieldFullySown();
     }
 
+    public void WaterColliderCallback(Vector3[] waterPositions)
+    {
+        
+    }
+
     private void FieldFullySown()
     {
         Debug.Log(" Field fully sown ");
@@ -96,5 +101,15 @@ public class CropField : MonoBehaviour
     public bool IsEmpty()
     {
         return state == TieldFieldState.Empty;
+    }
+
+    public bool IsSown()
+    {
+        return state == TieldFieldState.Sown;
+    }
+    
+    public bool IsWatered()
+    {
+        return state == TieldFieldState.Watered;
     }
 }
