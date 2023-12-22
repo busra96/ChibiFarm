@@ -759,6 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4279998132619684951}
+  waterParticles: {fileID: 934356700}
   moveSpeedMultiplier: 10
 --- !u!114 &377347267
 MonoBehaviour:
@@ -1977,14 +1978,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934356696}
-  m_LocalRotation: {x: 0.000000003922566, y: -0.33828697, z: 0.000000048767067, w: 0.941043}
-  m_LocalPosition: {x: 0.4, y: 1.53, z: 0.361}
+  m_LocalRotation: {x: 0.000000021009761, y: 0.018504737, z: 0.000000044183746, w: 0.9998288}
+  m_LocalPosition: {x: 0.544, y: 0.928, z: 0.379}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7891915633218844205}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: -39.545, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 2.121, z: 0}
 --- !u!199 &934356699
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -2892,7 +2893,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 30
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5958,7 +5959,7 @@ ParticleSystem:
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14790,6 +14791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seedParticles: {fileID: 1592903166}
+  waterParticles: {fileID: 934356700}
 --- !u!4 &8006243906365505961
 Transform:
   m_ObjectHideFlags: 0
