@@ -30,8 +30,18 @@ public class CropTile : MonoBehaviour
         
     }
 
+    public void Water()
+    {
+        state = TieldFieldState.Watered;
+    }
+
     public bool IsEmpty()
     {
         return state == TieldFieldState.Empty;
+    }
+
+    public bool IsSown()
+    {
+        return state == TieldFieldState.Sown;
     }
 }
