@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -39,7 +40,29 @@ public class CropTile : MonoBehaviour
         tileRenderer.material.color = Color.white * .5f;
 
         crop.ScaleUp();
+
+        tileRenderer.gameObject.LeanColor(Color.white * .3f, 1);
+
+        //StartCoroutine("ColorTileCoroutine");
     }
+
+    /*IEnumerator ColorTileCoroutine()
+    {
+        float duration = 1;
+        float timer = 0;
+
+        while (timer < duration)
+        {
+            float t = timer / duration;
+            Color lerpedColor = Color.Lerp(Color.white, Color.white * .5f, t);
+            
+            tileRenderer.material.color = lerpedColor;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        
+        yield return null;
+    }*/
 
     public bool IsEmpty()
     {
