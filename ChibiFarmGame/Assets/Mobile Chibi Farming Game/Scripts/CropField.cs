@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using NaughtyAttributes;
 
 public class CropField : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class CropField : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void StoreTiles()
@@ -103,8 +104,24 @@ public class CropField : MonoBehaviour
         Debug.Log(" Field fully watered ");
         
         state = TieldFieldState.Watered;
+        
         onFullyWatered?.Invoke(this);
     }
+
+    [Button]
+    private void InstantlySowTiles()
+    {
+        for (int i = 0; i < cropTiles.Count; i++)
+            Sow(cropTiles[i]);
+    }
+
+    [Button]
+    private void InstantlyWaterTiles()
+    {
+        for (int i = 0; i < cropTiles.Count; i++)
+            Water(cropTiles[i]);
+    }
+    
     
     private CropTile GetClosestCropTile(Vector3 seedPosition)
     {
