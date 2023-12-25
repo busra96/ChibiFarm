@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Crop : MonoBehaviour
 {
+    [Header(" Elements ")] 
+    [SerializeField] private Transform cropRenderer;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,10 @@ public class Crop : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ScaleUp()
+    {
+        cropRenderer.localScale = Vector3.one;
     }
 }

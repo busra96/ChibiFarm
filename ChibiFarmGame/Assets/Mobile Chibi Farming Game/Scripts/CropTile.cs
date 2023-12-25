@@ -9,6 +9,9 @@ public class CropTile : MonoBehaviour
 
     [Header(" Elements ")] 
     [SerializeField] private Transform cropParent;
+    [SerializeField] private MeshRenderer tileRenderer;
+    private Crop crop;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -26,13 +29,16 @@ public class CropTile : MonoBehaviour
     {
         state = TieldFieldState.Sown;
 
-        Crop crop = Instantiate(cropData.cropPrefab, transform.position, Quaternion.identity, cropParent);
+        crop = Instantiate(cropData.cropPrefab, transform.position, Quaternion.identity, cropParent);
         
     }
 
     public void Water()
     {
         state = TieldFieldState.Watered;
+        tileRenderer.material.color = Color.white * .5f;
+
+        crop.ScaleUp();
     }
 
     public bool IsEmpty()

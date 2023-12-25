@@ -45,7 +45,6 @@ public class PlayerWaterAbility : MonoBehaviour
         if(currentCropField == null)
             return;
 
-        
         currentCropField.WaterColliderCallback(waterPositions);
     }
 
@@ -67,8 +66,13 @@ public class PlayerWaterAbility : MonoBehaviour
 
     private void EnteredCropField(CropField cropField)
     {
-        if(playerToolSelector.CanWater())
-           playerAnimator.PlayWaterAnimation();
+        if (playerToolSelector.CanWater())
+        {
+            if(currentCropField == null)
+                currentCropField = cropField;
+            
+            playerAnimator.PlayWaterAnimation();
+        }
     }
 
     private void OnTriggerStay(Collider other)
