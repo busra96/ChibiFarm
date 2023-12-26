@@ -601,7 +601,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.27929726, y: 3e-45, z: -1e-45, w: 0.9602047}
+  m_LocalRotation: {x: 0.27929726, y: -1e-45, z: -0, w: 0.9602047}
   m_LocalPosition: {x: 0, y: 11.6, z: -10.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1033,7 +1033,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416656960}
-  m_LocalRotation: {x: 0.27929726, y: 3e-45, z: -1e-45, w: 0.9602047}
+  m_LocalRotation: {x: 0.27929726, y: -1e-45, z: -0, w: 0.9602047}
   m_LocalPosition: {x: 0, y: 11.6, z: -10.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12869,7 +12869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7778158705164969189}
   - component: {fileID: 2359569145194855006}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Clothes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13140,7 +13140,6 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 77ae234b85f342a4dbdbb3de2997705c, type: 2}
   - {fileID: 2100000, guid: 26877410c8aadb04d93250a5fd261d25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -13384,7 +13383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1835206687626623758}
   - component: {fileID: 1256361493868640790}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13443,7 +13442,6 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 77ae234b85f342a4dbdbb3de2997705c, type: 2}
   - {fileID: 2100000, guid: 26877410c8aadb04d93250a5fd261d25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -14230,7 +14228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4288012410483684340}
   - component: {fileID: 4239100851343259082}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14607,7 +14605,6 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 77ae234b85f342a4dbdbb3de2997705c, type: 2}
   - {fileID: 2100000, guid: 26877410c8aadb04d93250a5fd261d25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -14858,7 +14855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6386317453288624713}
   - component: {fileID: 7003632744810002073}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
