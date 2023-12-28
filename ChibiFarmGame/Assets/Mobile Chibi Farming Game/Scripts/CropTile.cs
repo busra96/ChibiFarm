@@ -13,19 +13,11 @@ public class CropTile : MonoBehaviour
     [SerializeField] private MeshRenderer tileRenderer;
     private Crop crop;
     
-    
-    // Start is called before the first frame update
     void Start()
     {
         state = TieldFieldState.Empty;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void Sow(CropData cropData)
     {
         state = TieldFieldState.Sown;
@@ -44,6 +36,15 @@ public class CropTile : MonoBehaviour
         tileRenderer.gameObject.LeanColor(Color.white * .3f, 1);
 
         //StartCoroutine("ColorTileCoroutine");
+    }
+
+    public void Harvest()
+    {
+        state = TieldFieldState.Empty;
+        
+        crop.ScaleDown();
+        
+        tileRenderer.gameObject.LeanColor(Color.white, 1);
     }
 
     /*IEnumerator ColorTileCoroutine()

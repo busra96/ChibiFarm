@@ -15,6 +15,7 @@ public class CropField : MonoBehaviour
     
     private int tileSown;
     private int tilesWatered;
+    private int tilesHarvested;
 
     [Header(" Actions ")]
     public static Action<CropField> onFullSown;
@@ -108,6 +109,47 @@ public class CropField : MonoBehaviour
         
         onFullyWatered?.Invoke(this);
     }
+
+
+    public void Harvest(Transform harvestSphere)
+    {
+        float sphereRadius = harvestSphere.localScale.x;
+
+        for (int i = 0; i < cropTiles.Count; i++)
+        {
+            if(cropTiles[i].IsEmpty())
+                continue;
+
+            float distanceCropTileSphere = Vector3.Distance(harvestSphere.position, cropTiles[i].transform.position);
+
+            if (distanceCropTileSphere <= sphereRadius)
+                HarvestTile(cropTiles[i]);
+        }
+    }
+
+    private void HarvestTile(CropTile cropTile)
+    {
+        cropTile.Harvest();
+
+        tilesHarvested++;
+
+        if (tilesHarvested == cropTiles.Count)
+            FieldFullyHarvested();
+    }
+
+    private void FieldFullyHarvested()
+    {
+        tileSown = 0;
+        tilesWatered = 0;
+        tilesHarvested = 0;
+
+        state = TieldFieldState.Empty;
+        
+        
+        onFullyHarvested?.Invoke(this);
+
+    }
+
 
     [Button]
     private void InstantlySowTiles()
