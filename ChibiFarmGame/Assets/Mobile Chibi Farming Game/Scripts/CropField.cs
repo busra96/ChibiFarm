@@ -19,6 +19,7 @@ public class CropField : MonoBehaviour
     [Header(" Actions ")]
     public static Action<CropField> onFullSown;
     public static Action<CropField> onFullyWatered;
+    public static Action<CropField> onFullyHarvested;
 
     // Start is called before the first frame update
     void Start()
