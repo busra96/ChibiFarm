@@ -81,4 +81,17 @@ public class PlayerHarvestAbility : MonoBehaviour
             currentCropField = null;
         }
     }
+
+
+
+
+    public void HarvestingStartedCallback()
+    {
+        
+    }
+    
+    public void HarvestingStoppedCallback()
+    {
+        
+    }
 }
