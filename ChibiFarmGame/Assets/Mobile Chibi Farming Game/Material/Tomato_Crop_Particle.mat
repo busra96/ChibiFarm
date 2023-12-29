@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Corn_Crop
+  m_Name: Tomato_Crop_Particle
   m_Shader: {fileID: -6465566751694194690, guid: 8ae08ba82de0a99449de3b8a57fbbaf4,
     type: 3}
   m_ValidKeywords: []
@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Base_Map:
-        m_Texture: {fileID: 2800000, guid: 24668302c036de648899cfa249298de2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 024dbba493f6a1941a374b583be3e0e3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
