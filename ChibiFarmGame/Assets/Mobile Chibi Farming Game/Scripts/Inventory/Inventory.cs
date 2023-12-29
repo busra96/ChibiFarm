@@ -7,6 +7,25 @@ public class Inventory
 
     public void CropHarvestedCallback(CropType cropType)
     {
-        Debug.Log(cropType + " has been added");
+        bool cropFound = false;
+
+        for (int i = 0; i < items.Count; i++)
+        {
+
+            InventoryItem item = items[i];
+
+            if (item.cropType == cropType)
+            {
+                item.amount++;
+                cropFound = true;
+                break;
+            }
+        }
+        
+        if(cropFound)
+            return;
+        
+        //Create a new item in the list with that cropType
+        items.Add(new InventoryItem(cropType,1));
     }
 }
