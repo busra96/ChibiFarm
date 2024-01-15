@@ -9,17 +9,7 @@ public class InventoryDisplay : MonoBehaviour
     [SerializeField] private Transform CropContainersParent;
     [SerializeField] private UICropContainer uiCropContainerPrefab;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Configure(Inventory inventory)
     {
@@ -28,7 +18,10 @@ public class InventoryDisplay : MonoBehaviour
         for(int i = 0; i < items.Length; i++)
         {
             UICropContainer cropContainerInstance = Instantiate(uiCropContainerPrefab, CropContainersParent);
-            cropContainerInstance.UpdateDisplay(items[i].amount);
+
+            Sprite cropIcon = DataManager.instance.GetCropSpriteFromCropType(items[i].cropType);
+
+            cropContainerInstance.Configure(cropIcon,items[i].amount);
         }
     }
 }
