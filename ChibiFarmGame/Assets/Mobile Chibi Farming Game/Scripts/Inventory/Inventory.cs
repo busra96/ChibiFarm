@@ -28,4 +28,9 @@ public class Inventory
         //Create a new item in the list with that cropType
         items.Add(new InventoryItem(cropType,1));
     }
+
+    public InventoryItem[] GetInventoryItems()
+    {
+      return items.ToArray();
+    }
 }

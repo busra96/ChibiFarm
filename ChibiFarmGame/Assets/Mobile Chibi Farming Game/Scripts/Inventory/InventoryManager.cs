@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+[RequireComponent(typeof(InventoryDisplay))]
 public class InventoryManager : MonoBehaviour
 {
     private Inventory inventory;
+    private InventoryDisplay inventoryDisplay;
     private string dataPath;
     
     void Start()
@@ -13,13 +15,21 @@ public class InventoryManager : MonoBehaviour
         //inventory = new Inventory();
         dataPath = Application.dataPath + "/inventoryData.txt";
         LoadInventory();
-
+        
+        ConfigureInventoryDisplay();
+       
         CropTile.onCropHarvested += CropHarvestedCallback;
     }
 
     private void OnDestroy()
     {
         CropTile.onCropHarvested -= CropHarvestedCallback;
+    }
+
+    private void ConfigureInventoryDisplay()
+    {
+         inventoryDisplay = GetComponent<InventoryDisplay>();
+        inventoryDisplay.Configure(inventory);
     }
 
     private void CropHarvestedCallback(CropType cropType)
