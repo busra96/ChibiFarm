@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using NaughtyAttributes;
 using UnityEngine;
 
 [RequireComponent(typeof(InventoryDisplay))]
@@ -34,7 +35,21 @@ public class InventoryManager : MonoBehaviour
 
     private void CropHarvestedCallback(CropType cropType)
     {
+
+        //update our inventory
         inventory.CropHarvestedCallback(cropType);
+
+        inventoryDisplay.UpdateDisplay(inventory);
+
+        SaveInventory();
+    }
+
+    [Button()]
+    private void ClearInventory()
+    {
+        inventory.Clear();
+        inventoryDisplay.UpdateDisplay(inventory);
+        
         SaveInventory();
     }
 

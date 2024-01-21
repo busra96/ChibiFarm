@@ -29,6 +29,11 @@ public class Inventory
         items.Add(new InventoryItem(cropType,1));
     }
 
+    public void Clear()
+    {
+        items.Clear();
+    }
+
     public InventoryItem[] GetInventoryItems()
     {
       return items.ToArray();
