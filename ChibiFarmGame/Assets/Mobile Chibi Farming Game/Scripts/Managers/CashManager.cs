@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class CashManager : MonoBehaviour
@@ -6,6 +7,9 @@ public class CashManager : MonoBehaviour
     
     [Header(" Settings ")] 
     private int coins;
+
+    [Header(" Elements ")] 
+    [SerializeField] private TextMeshProUGUI CoinText;
     
     private void Awake()
     {
@@ -15,14 +19,22 @@ public class CashManager : MonoBehaviour
             Destroy(gameObject);
         
         LoadData();
+        UpdateCoinContainers();
     }
 
     public void AddCoins(int amount)
     {
         coins += amount;
+        UpdateCoinContainers();
         Debug.Log(" We now have " + coins  + " coins ");
 
         SaveData();
+        
+    }
+
+    private void UpdateCoinContainers()
+    {
+        CoinText.text = coins.ToString();
     }
 
     private void LoadData()
