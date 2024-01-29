@@ -42,6 +42,8 @@ public class PlayerBuyerInteractor : MonoBehaviour
         
         //give coins to the player
         Debug.Log(" We have aerned " + coinsEarned + " coins ");
+
+        CashManager.instance.AddCoins(coinsEarned);
         
         //Clear the inventory
         _inventoryManager.ClearInventory();
