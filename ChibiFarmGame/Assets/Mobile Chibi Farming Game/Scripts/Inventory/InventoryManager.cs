@@ -45,7 +45,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     [Button()]
-    private void ClearInventory()
+    public void ClearInventory()
     {
         inventory.Clear();
         inventoryDisplay.UpdateDisplay(inventory);
@@ -53,6 +53,11 @@ public class InventoryManager : MonoBehaviour
         SaveInventory();
     }
 
+    
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
     private void LoadInventory()
     {
         string data = "";
@@ -75,4 +80,5 @@ public class InventoryManager : MonoBehaviour
         File.WriteAllText(dataPath, data);
     }
 
+   
 }

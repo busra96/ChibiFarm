@@ -29,4 +29,16 @@ public class DataManager : MonoBehaviour
 
         return null;
     }
+
+
+    public int GetCropPriceFromCropType(CropType cropType)
+    {
+        for(int i = 0; i < cropData.Length; i++)
+        {
+            if(cropData[i].cropType == cropType)
+                return cropData[i].price;
+        }
+
+        return 0;
+    }
 }
