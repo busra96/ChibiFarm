@@ -52,10 +52,13 @@ public class WorldManager : MonoBehaviour
         {
             FileStream fs = new FileStream(dataPath, FileMode.Create);
 
-            worldData = new WorldData(world.childCount);
+            worldData = new WorldData();
 
             for (int i = 0; i < world.childCount; i++)
-                worldData.chunkPrices[i] = world.GetChild(i).GetComponent<Chunk>().GetInitialPrice();
+            {
+                int chunkInitialPrice = world.GetChild(i).GetComponent<Chunk>().GetInitialPrice();
+                worldData.chunkPrices.Add(chunkInitialPrice); 
+            }
 
             string worldDataString = JsonUtility.ToJson(worldData, true);
 
@@ -70,16 +73,39 @@ public class WorldManager : MonoBehaviour
             data = File.ReadAllText(dataPath);
             worldData = JsonUtility.FromJson<WorldData>(data);
 
+            if (worldData.chunkPrices.Count < world.childCount)
+                UpdateData();
         }
+    }
+
+    private void UpdateData()
+    {
+        //how many chunks are missing in our data
+        int missingData = world.childCount - worldData.chunkPrices.Count;
+
+        for (int i = 0; i < missingData; i++)
+        {
+            int chunkIndex = world.childCount - missingData + i;
+            int chunkPrice = world.GetChild(chunkIndex).GetComponent<Chunk>().GetInitialPrice();
+            worldData.chunkPrices.Add(chunkPrice);
+        }
+
     }
 
     private void SaveWorld()
     {
-        if (worldData.chunkPrices.Length != world.childCount)
-            worldData.chunkPrices = new int[world.childCount];
+        if (worldData.chunkPrices.Count != world.childCount)
+            worldData = new WorldData();
 
         for (int i = 0; i < world.childCount; i++)
-            worldData.chunkPrices[i] = world.GetChild(i).GetComponent<Chunk>().GetCurrentPrice();
+        {
+            int chunkCurrentPrice = world.GetChild(i).GetComponent<Chunk>().GetCurrentPrice();
+
+            if (worldData.chunkPrices.Count > i)
+                worldData.chunkPrices[i] = chunkCurrentPrice;
+            else
+                worldData.chunkPrices.Add(chunkCurrentPrice); 
+        }
 
         string data = JsonUtility.ToJson(worldData, true);
         
