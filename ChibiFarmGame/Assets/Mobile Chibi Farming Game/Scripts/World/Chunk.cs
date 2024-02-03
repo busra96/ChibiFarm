@@ -11,6 +11,7 @@ public class Chunk : MonoBehaviour
     [Header(" Settings ")] 
     [SerializeField] private int initialPrice;
     private int currentPrice;
+    private bool unlocked;
 
     // Start is called before the first frame update
     void Start()
@@ -42,5 +43,22 @@ public class Chunk : MonoBehaviour
     {
         unlockedElements.SetActive(true);
         lockedElements.SetActive(false);
+
+        unlocked = true;
+    }
+
+    public bool IsUnlocked()
+    {
+        return unlocked;
+    }
+
+    public int GetInitialPrice()
+    {
+        return initialPrice;
+    }
+
+    public int GetCurrentPrice()
+    {
+        return currentPrice;
     }
 }
