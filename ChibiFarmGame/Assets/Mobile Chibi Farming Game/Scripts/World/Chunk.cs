@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 public class Chunk : MonoBehaviour
@@ -12,11 +10,13 @@ public class Chunk : MonoBehaviour
 
     [Header(" Settings ")] 
     [SerializeField] private int initialPrice;
+    private int currentPrice;
 
     // Start is called before the first frame update
     void Start()
     {
-        priceText.text = initialPrice.ToString();
+        currentPrice = initialPrice;
+        priceText.text = currentPrice.ToString();
     }
 
     // Update is called once per frame
@@ -27,6 +27,20 @@ public class Chunk : MonoBehaviour
 
     public void TryUnlock()
     {
-        Debug.Log(" Trying to unlock the chunk " + name);
+        if(CashManager.instance.GetCoins() <= 0)
+            return;
+        
+        currentPrice--;
+        CashManager.instance.UseCoins(1);
+        priceText.text = currentPrice.ToString();
+
+        if (currentPrice <= 0)
+            Unlock();
+    }
+
+    private void Unlock()
+    {
+        unlockedElements.SetActive(true);
+        lockedElements.SetActive(false);
     }
 }

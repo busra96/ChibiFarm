@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
@@ -22,6 +23,17 @@ public class CashManager : MonoBehaviour
         UpdateCoinContainers();
     }
 
+    [Button()]
+    private void Add500Coins()
+    {
+        AddCoins(500);
+    }
+
+    public void UseCoins(int amount)
+    {
+        AddCoins(-amount);
+    }
+    
     public void AddCoins(int amount)
     {
         coins += amount;
@@ -37,6 +49,10 @@ public class CashManager : MonoBehaviour
         CoinText.text = coins.ToString();
     }
 
+    public int GetCoins()
+    {
+        return coins;
+    }
     private void LoadData()
     {
         coins = PlayerPrefs.GetInt("Coins");

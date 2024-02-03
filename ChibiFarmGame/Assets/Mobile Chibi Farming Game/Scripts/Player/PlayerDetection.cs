@@ -4,7 +4,7 @@ public class PlayerDetection : MonoBehaviour
 {
    private void OnTriggerStay(Collider other)
    {
-      if (other.GetComponentInParent<Chunk>() != null)
+      if (other.CompareTag("ChunkTrigger"))
       {
          Chunk chunk = other.GetComponentInParent<Chunk>();
          chunk.TryUnlock();
