@@ -12,10 +12,12 @@ public class WorldManager : MonoBehaviour
     [Header(" Data ")]
     private WorldData worldData;
     private string dataPath;
+    private bool shouldSave;
     
     private void Awake()
     {
         Chunk.onUnlocked += ChunkUnlockedCallback;
+        Chunk.onPriceChanged += ChunkPriceChangedCallback;
     }
     
     void Start()
@@ -23,17 +25,32 @@ public class WorldManager : MonoBehaviour
         dataPath = Application.dataPath + "/WorldData.txt";
         LoadWorld();
         Initialize();
+        
+        InvokeRepeating("TrySaveGame", 1, 1);
     }
 
     private void OnDestroy()
     {
         Chunk.onUnlocked -= ChunkUnlockedCallback;
+        Chunk.onPriceChanged -= ChunkPriceChangedCallback;
     }
-    
+
     private void Initialize()
     {
         for (int i = 0; i < world.childCount; i++)
             world.GetChild(i).GetComponent<Chunk>().Initialize(worldData.chunkPrices[i]);
+    }
+
+    private void TrySaveGame()
+    {
+        Debug.Log(" Try save game ");
+
+        if (shouldSave)
+        {
+            SaveWorld();
+            shouldSave = false;
+        }
+           
     }
     
     private void ChunkUnlockedCallback()
@@ -43,6 +60,10 @@ public class WorldManager : MonoBehaviour
         SaveWorld();
     }
 
+    private void ChunkPriceChangedCallback()
+    {
+        shouldSave = true;
+    }
 
     private void LoadWorld()
     {
