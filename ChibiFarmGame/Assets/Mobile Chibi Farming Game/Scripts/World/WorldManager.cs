@@ -11,15 +11,16 @@ public class WorldManager : MonoBehaviour
     
     [Header(" Data ")]
     private WorldData worldData;
+    private string dataPath;
     
     void Start()
     {
+        dataPath = Application.dataPath + "/WorldData.txt";
         LoadWorld();
     }
 
     private void LoadWorld()
     {
-        string dataPath = Application.dataPath + "/WorldData.txt";
         string data = "";
 
         if (!File.Exists(dataPath))
@@ -49,6 +50,16 @@ public class WorldManager : MonoBehaviour
 
     private void SaveWorld()
     {
+        if (worldData.chunkPrices.Length != world.childCount)
+            worldData.chunkPrices = new int[world.childCount];
+
+        for (int i = 0; i < world.childCount; i++)
+            worldData.chunkPrices[i] = world.GetChild(i).GetComponent<Chunk>().GetCurrentPrice();
+
+        string data = JsonUtility.ToJson(worldData, true);
         
+        File.WriteAllText(dataPath, data);
+        
+        Debug.LogWarning(" Data Saved !");
     }
 }
