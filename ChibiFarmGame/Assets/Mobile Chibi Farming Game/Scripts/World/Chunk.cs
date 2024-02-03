@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 public class Chunk : MonoBehaviour
 {
     [Header(" Elements ")] 
@@ -13,17 +14,17 @@ public class Chunk : MonoBehaviour
     private int currentPrice;
     private bool unlocked;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentPrice = initialPrice;
-        priceText.text = currentPrice.ToString();
-    }
+    [Header(" Action ")] 
+    public static Action onUnlocked;
 
-    // Update is called once per frame
-    void Update()
+    
+    public void Initialize(int loadedPrice)
     {
+        currentPrice = loadedPrice;
+        priceText.text = currentPrice.ToString();
         
+        if(currentPrice <= 0)
+            Unlock(false);
     }
 
     public void TryUnlock()
@@ -38,15 +39,18 @@ public class Chunk : MonoBehaviour
         if (currentPrice <= 0)
             Unlock();
     }
-
-    private void Unlock()
+    
+    private void Unlock(bool triggerAction = true)
     {
         unlockedElements.SetActive(true);
         lockedElements.SetActive(false);
 
         unlocked = true;
+        
+        if(triggerAction)
+           onUnlocked?.Invoke();
     }
-
+    
     public bool IsUnlocked()
     {
         return unlocked;
@@ -61,4 +65,6 @@ public class Chunk : MonoBehaviour
     {
         return currentPrice;
     }
+
+    
 }

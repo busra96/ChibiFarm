@@ -13,11 +13,36 @@ public class WorldManager : MonoBehaviour
     private WorldData worldData;
     private string dataPath;
     
+    private void Awake()
+    {
+        Chunk.onUnlocked += ChunkUnlockedCallback;
+    }
+    
     void Start()
     {
         dataPath = Application.dataPath + "/WorldData.txt";
         LoadWorld();
+        Initialize();
     }
+
+    private void OnDestroy()
+    {
+        Chunk.onUnlocked -= ChunkUnlockedCallback;
+    }
+    
+    private void Initialize()
+    {
+        for (int i = 0; i < world.childCount; i++)
+            world.GetChild(i).GetComponent<Chunk>().Initialize(worldData.chunkPrices[i]);
+    }
+    
+    private void ChunkUnlockedCallback()
+    {
+        Debug.Log(" Chunk unlocked ");
+
+        SaveWorld();
+    }
+
 
     private void LoadWorld()
     {
