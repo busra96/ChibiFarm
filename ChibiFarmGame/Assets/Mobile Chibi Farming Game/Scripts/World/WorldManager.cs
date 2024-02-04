@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
@@ -8,6 +6,11 @@ public class WorldManager : MonoBehaviour
 {
     [Header(" Elements ")] 
     [SerializeField] private Transform world;
+    private Chunk[,] grid;
+
+    [Header(" Settings ")] 
+    [SerializeField] private int gridSize;
+    [SerializeField] private int gridScale;
     
     [Header(" Data ")]
     private WorldData worldData;
@@ -39,6 +42,38 @@ public class WorldManager : MonoBehaviour
     {
         for (int i = 0; i < world.childCount; i++)
             world.GetChild(i).GetComponent<Chunk>().Initialize(worldData.chunkPrices[i]);
+
+        InitializeGrid();
+
+        for (int x = 0; x < gridSize; x++)
+        {
+            
+            for (int y = 0; y < gridSize; y++)
+            {
+                if(grid[x,y] != null)
+                   Debug.Log(grid[x,y].name);
+            }
+        }
+    }
+
+    private void InitializeGrid()
+    {
+        grid = new Chunk[gridSize, gridSize];
+
+        for (int i = 0; i < world.childCount; i++)
+        {
+            Chunk chunk = world.GetChild(i).GetComponent<Chunk>();
+
+            Vector2Int chunkGridPosition = new Vector2Int((int)chunk.transform.position.x/ gridScale, (int)chunk.transform.position.z/ gridScale);
+            Debug.Log(" Vector2Int " + chunkGridPosition.x + " // " + chunkGridPosition.y);
+
+            chunkGridPosition += new Vector2Int(gridSize / 2, gridSize / 2);
+            
+            Debug.Log(" Vector2Int Last " + chunkGridPosition.x + " // " + chunkGridPosition.y);
+
+            grid[chunkGridPosition.x, chunkGridPosition.y] = chunk;
+        }
+        
     }
 
     private void TrySaveGame()
