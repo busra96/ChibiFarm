@@ -316,6 +316,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chunk (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3733643896046162259, guid: 0ff0307ce91cfea4695765baddb6135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3733643896046162260, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
       propertyPath: m_RootOrder
@@ -800,6 +805,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chunk (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3733643896046162259, guid: 0ff0307ce91cfea4695765baddb6135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3733643896046162260, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1191,6 +1201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chunk (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3733643896046162259, guid: 0ff0307ce91cfea4695765baddb6135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3733643896046162260, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1455,6 +1470,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chunk (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3733643896046162259, guid: 0ff0307ce91cfea4695765baddb6135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3733643896046162260, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1534,6 +1554,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chunk (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733643896046162259, guid: 0ff0307ce91cfea4695765baddb6135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3733643896046162260, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
@@ -8314,6 +8339,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chunk (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3733643896046162259, guid: 0ff0307ce91cfea4695765baddb6135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3733643896046162260, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
       propertyPath: m_RootOrder
@@ -8602,6 +8632,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chunk (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3733643896046162259, guid: 0ff0307ce91cfea4695765baddb6135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3733643896046162260, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
       propertyPath: m_RootOrder
@@ -8723,6 +8758,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chunk (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733643896046162259, guid: 0ff0307ce91cfea4695765baddb6135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3733643896046162260, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
@@ -14195,6 +14235,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chunk (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3733643896046162259, guid: 0ff0307ce91cfea4695765baddb6135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3733643896046162260, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
       propertyPath: m_RootOrder
@@ -14556,6 +14601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chunk (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733643896046162259, guid: 0ff0307ce91cfea4695765baddb6135a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3733643896046162260, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
@@ -17639,7 +17689,7 @@ PrefabInstance:
     - target: {fileID: 6716328583359071041, guid: 0ff0307ce91cfea4695765baddb6135a,
         type: 3}
       propertyPath: initialPrice
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ff0307ce91cfea4695765baddb6135a, type: 3}

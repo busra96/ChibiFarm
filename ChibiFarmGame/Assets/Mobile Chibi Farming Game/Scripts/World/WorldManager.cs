@@ -44,16 +44,8 @@ public class WorldManager : MonoBehaviour
             world.GetChild(i).GetComponent<Chunk>().Initialize(worldData.chunkPrices[i]);
 
         InitializeGrid();
-
-        for (int x = 0; x < gridSize; x++)
-        {
-            
-            for (int y = 0; y < gridSize; y++)
-            {
-                if(grid[x,y] != null)
-                   Debug.Log(grid[x,y].name);
-            }
-        }
+        
+        UpdateChunkWalls();
     }
 
     private void InitializeGrid()
@@ -65,20 +57,76 @@ public class WorldManager : MonoBehaviour
             Chunk chunk = world.GetChild(i).GetComponent<Chunk>();
 
             Vector2Int chunkGridPosition = new Vector2Int((int)chunk.transform.position.x/ gridScale, (int)chunk.transform.position.z/ gridScale);
-            Debug.Log(" Vector2Int " + chunkGridPosition.x + " // " + chunkGridPosition.y);
+           // Debug.Log(" Vector2Int " + chunkGridPosition.x + " // " + chunkGridPosition.y);
 
             chunkGridPosition += new Vector2Int(gridSize / 2, gridSize / 2);
             
-            Debug.Log(" Vector2Int Last " + chunkGridPosition.x + " // " + chunkGridPosition.y);
+            //Debug.Log(" Vector2Int Last " + chunkGridPosition.x + " // " + chunkGridPosition.y);
 
             grid[chunkGridPosition.x, chunkGridPosition.y] = chunk;
         }
         
     }
 
+    private void UpdateChunkWalls()
+    {
+        //loop along the x axis
+        for (int x = 0; x < grid.GetLength(0); x++)
+        {
+            //loop along the z axis
+            for (int y = 0; y < grid.GetLength(1); y++)
+            {
+                Chunk chunk = grid[x, y];
+                
+                if(chunk == null)
+                    continue;
+
+                chunk.frontChunk = GetChunk(x, y + 1);
+                chunk.rightChunk = GetChunk(x + 1, y);
+                chunk.backChunk  = GetChunk(x, y - 1);
+                chunk.leftChunk  = GetChunk(x - 1, y);
+
+                int configuration = 0;
+
+                if (chunk.frontChunk != null && chunk.frontChunk.IsUnlocked())
+                    configuration = configuration + 1;
+                
+                if (chunk.rightChunk != null && chunk.rightChunk.IsUnlocked())
+                    configuration = configuration + 2;
+                
+                if (chunk.backChunk != null && chunk.backChunk.IsUnlocked())
+                    configuration = configuration + 4;
+                
+                if (chunk.leftChunk != null && chunk.leftChunk.IsUnlocked())
+                    configuration = configuration + 8;
+                
+                // We know the configuration of the chunk
+                chunk.UpdateWalls(configuration);
+            }
+        }
+    }
+
+    public Chunk GetChunk(int x, int y)
+    {
+        Chunk chunk = null;
+
+        if (IsValidGridPosition(x, y))
+            chunk = grid[x, y];
+        
+        return chunk;
+    }
+
+    private bool IsValidGridPosition(int x, int y)
+    {
+        if (x < 0 || x >= gridSize || y < 0 || y >= gridSize)
+            return false;
+
+        return true;
+    }
+
     private void TrySaveGame()
     {
-        Debug.Log(" Try save game ");
+       // Debug.Log(" Try save game ");
 
         if (shouldSave)
         {
