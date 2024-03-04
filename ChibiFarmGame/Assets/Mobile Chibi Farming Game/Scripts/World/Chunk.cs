@@ -70,6 +70,11 @@ public class Chunk : MonoBehaviour
     {
         chunkWalls.Configure(configuration);
     }
+
+    public void DisplayLockedElements()
+    {
+        lockedElements.SetActive(true);
+    }
     
     public bool IsUnlocked()
     {

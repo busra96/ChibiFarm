@@ -46,6 +46,7 @@ public class WorldManager : MonoBehaviour
         InitializeGrid();
         
         UpdateChunkWalls();
+        UpdateGridRenderers();
     }
 
     private void InitializeGrid()
@@ -89,16 +90,16 @@ public class WorldManager : MonoBehaviour
                 int configuration = 0;
 
                 if (chunk.frontChunk != null && chunk.frontChunk.IsUnlocked())
-                    configuration = configuration + 1;
+                    configuration += 1;
                 
                 if (chunk.rightChunk != null && chunk.rightChunk.IsUnlocked())
-                    configuration = configuration + 2;
+                    configuration += 2;
                 
                 if (chunk.backChunk != null && chunk.backChunk.IsUnlocked())
-                    configuration = configuration + 4;
+                    configuration += 4;
                 
                 if (chunk.leftChunk != null && chunk.leftChunk.IsUnlocked())
-                    configuration = configuration + 8;
+                    configuration += 8;
                 
                 // We know the configuration of the chunk
                 chunk.UpdateWalls(configuration);
@@ -106,6 +107,35 @@ public class WorldManager : MonoBehaviour
         }
     }
 
+    private void UpdateGridRenderers()
+    {
+        //loop along the x axis
+        for (int x = 0; x < grid.GetLength(0); x++)
+        {
+            //loop along the z axis
+            for (int y = 0; y < grid.GetLength(1); y++)
+            {
+                Chunk chunk = grid[x, y];
+                
+                if(chunk == null)
+                    continue;
+
+                if(chunk.IsUnlocked())
+                    continue;
+                
+                    
+                if (chunk.frontChunk != null && chunk.frontChunk.IsUnlocked())
+                    chunk.DisplayLockedElements();
+                else if(chunk.rightChunk != null && chunk.rightChunk.IsUnlocked())
+                    chunk.DisplayLockedElements();
+                else if(chunk.backChunk != null && chunk.backChunk.IsUnlocked())
+                    chunk.DisplayLockedElements();
+                else if(chunk.leftChunk != null && chunk.leftChunk.IsUnlocked())
+                    chunk.DisplayLockedElements();
+            }
+        }
+    }
+    
     public Chunk GetChunk(int x, int y)
     {
         Chunk chunk = null;
@@ -141,6 +171,7 @@ public class WorldManager : MonoBehaviour
         Debug.Log(" Chunk unlocked ");
 
         UpdateChunkWalls();
+        UpdateGridRenderers();
 
         SaveWorld();
     }
