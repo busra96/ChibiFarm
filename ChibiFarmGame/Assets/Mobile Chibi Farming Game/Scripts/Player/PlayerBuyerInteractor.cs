@@ -39,11 +39,10 @@ public class PlayerBuyerInteractor : MonoBehaviour
             int itemPrice = DataManager.instance.GetCropPriceFromCropType(items[i].cropType);
             coinsEarned += itemPrice * items[i].amount;
         }
-        
-        //give coins to the player
-        Debug.Log(" We have aerned " + coinsEarned + " coins ");
 
-        CashManager.instance.AddCoins(coinsEarned);
+
+        TransactionEffectManager.instance.PlayCoinParticles(coinsEarned);
+     //   CashManager.instance.AddCoins(coinsEarned);
         
         //Clear the inventory
         _inventoryManager.ClearInventory();

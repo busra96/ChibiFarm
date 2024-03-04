@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TransactionEffectManager : MonoBehaviour
 {
+    public static TransactionEffectManager instance;
+    
     [Header(" Elements ")] 
     [SerializeField] private ParticleSystem coinPS;
     [SerializeField] private RectTransform coinRectTransform;
@@ -14,8 +15,15 @@ public class TransactionEffectManager : MonoBehaviour
     private int coinsAmount;
     private Camera camera;
 
+
     private void Start()
     {
+
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+        
         camera = Camera.main;
     }
 
@@ -28,6 +36,9 @@ public class TransactionEffectManager : MonoBehaviour
 
     public void PlayCoinParticles(int amount)
     {
+        if(coinPS.isPlaying)
+            return;
+        
         ParticleSystem.Burst burst = coinPS.emission.GetBurst(0);
         burst.count = amount;
         
@@ -62,8 +73,15 @@ public class TransactionEffectManager : MonoBehaviour
 
             for (int i = 0; i < particles.Length; i++)
             {
+                
+                
                 particles[i].position  = Vector3.MoveTowards(particles[i].position, targetPosition, moveSpeed * Time.deltaTime);
-               // particles[i].position += Vector3.forward * Time.deltaTime * 5;
+
+                if (Vector3.Distance(particles[i].position, targetPosition) < .01f)
+                {
+                    particles[i].position += Vector3.up * 100000;
+                    CashManager.instance.AddCoins(1);
+                }
             }
             
             
