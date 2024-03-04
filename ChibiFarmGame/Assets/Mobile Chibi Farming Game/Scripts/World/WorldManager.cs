@@ -140,6 +140,8 @@ public class WorldManager : MonoBehaviour
     {
         Debug.Log(" Chunk unlocked ");
 
+        UpdateChunkWalls();
+
         SaveWorld();
     }
 

@@ -10,18 +10,10 @@ public class ChunkWalls : MonoBehaviour
 
     public void Configure(int configuration)
     {
-        
-        if (IsKthBitSet(configuration, 0))
-            frontWall.SetActive(true);
-        
-        if(IsKthBitSet(configuration, 1))
-            rightWall.SetActive(true);
-        
-        if(IsKthBitSet(configuration, 2))
-            backWall.SetActive(true);
-        
-        if(IsKthBitSet(configuration, 3))
-            leftWall.SetActive(true);
+        frontWall.SetActive(IsKthBitSet(configuration, 0));
+        rightWall.SetActive(IsKthBitSet(configuration, 1));
+        backWall.SetActive(IsKthBitSet(configuration, 2));
+        leftWall.SetActive(IsKthBitSet(configuration, 3));
     }
 
     public bool IsKthBitSet(int configuration, int k)
