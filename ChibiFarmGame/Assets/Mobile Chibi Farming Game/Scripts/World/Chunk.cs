@@ -91,5 +91,12 @@ public class Chunk : MonoBehaviour
         return currentPrice;
     }
 
-    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, Vector3.one * 6);
+
+        Gizmos.color = new Color(0, 0, 0, 0);
+        Gizmos.DrawCube(transform.position, Vector3.one * 6);
+    }
 }
