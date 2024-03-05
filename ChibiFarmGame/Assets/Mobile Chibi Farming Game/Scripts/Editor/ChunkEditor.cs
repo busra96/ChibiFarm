@@ -12,7 +12,7 @@ public class ChunkEditor : Editor
   {
     GUIStyle style = new GUIStyle();
     style.alignment = TextAnchor.MiddleCenter;
-    style.fontSize = 25;
+    style.fontSize = 15;
     style.normal.textColor = Color.black;
 
     Chunk chunk = (Chunk)target;
