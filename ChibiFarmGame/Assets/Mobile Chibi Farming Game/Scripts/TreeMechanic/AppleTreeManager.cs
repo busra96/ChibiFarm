@@ -10,7 +10,7 @@ public class AppleTreeManager : MonoBehaviour
     private AppleTree LastTriggeredTree;
 
     [Header(" Actions ")] 
-    public static Action onTreeModeStarted;
+    public static Action<AppleTree> onTreeModeStarted;
 
     private void Awake()
     {
@@ -39,6 +39,6 @@ public class AppleTreeManager : MonoBehaviour
     {
         LastTriggeredTree.EnableCam();
         
-        onTreeModeStarted?.Invoke();
+        onTreeModeStarted?.Invoke(LastTriggeredTree);
     }
 }
