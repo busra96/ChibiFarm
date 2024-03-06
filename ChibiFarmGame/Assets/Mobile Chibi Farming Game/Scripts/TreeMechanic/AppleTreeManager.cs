@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AppleTreeManager : MonoBehaviour
 {
     [Header(" Settings ")] 
     private AppleTree LastTriggeredTree;
-    
+
+    [Header(" Actions ")] 
+    public static Action onTreeModeStarted;
+
     private void Awake()
     {
         PlayerDetection.onEnteredTreeZone += EnteredTreeZoneCallback;
@@ -16,18 +20,6 @@ public class AppleTreeManager : MonoBehaviour
     private void OnDestroy()
     {
         PlayerDetection.onEnteredTreeZone -= EnteredTreeZoneCallback;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
     private void EnteredTreeZoneCallback(AppleTree tree)
@@ -38,6 +30,15 @@ public class AppleTreeManager : MonoBehaviour
     public void TreeButtonCallback()
     {
         Debug.Log(" Tree button click ");
+       
+
+        StartTreeMode();
+    }
+
+    private void StartTreeMode()
+    {
         LastTriggeredTree.EnableCam();
+        
+        onTreeModeStarted?.Invoke();
     }
 }

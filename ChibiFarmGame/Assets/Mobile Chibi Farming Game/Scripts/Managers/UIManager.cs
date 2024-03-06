@@ -1,12 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
 
     [Header(" Elements ")] 
+    [SerializeField]private GameObject gamePanel;
+    [SerializeField]private GameObject treeModelPanel;
+    
     [SerializeField] private GameObject treeButton;
     [SerializeField] private GameObject toolButtonsContainer;
 
@@ -14,26 +14,24 @@ public class UIManager : MonoBehaviour
     {
         PlayerDetection.onEnteredTreeZone += EnteredTreeZoneCallback;
         PlayerDetection.onExitedTreeZone += ExitedTreeZoneCallback;
+
+        AppleTreeManager.onTreeModeStarted += SetTreeMode;
     }
 
     private void OnDestroy()
     {
         PlayerDetection.onEnteredTreeZone -= EnteredTreeZoneCallback;
         PlayerDetection.onExitedTreeZone -= ExitedTreeZoneCallback;
+        
+        AppleTreeManager.onTreeModeStarted -= SetTreeMode;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       SetGameMode();   
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     private void EnteredTreeZoneCallback(AppleTree tree)
     {
         treeButton.SetActive(true);
@@ -44,5 +42,17 @@ public class UIManager : MonoBehaviour
     {
         toolButtonsContainer.SetActive(true);
         treeButton.SetActive(false);
+    }
+
+    private void SetGameMode()
+    {
+        gamePanel.SetActive(true);
+        treeModelPanel.SetActive(false);
+    }
+
+    private void SetTreeMode()
+    {
+        treeModelPanel.SetActive(true);
+        gamePanel.SetActive(false);
     }
 }
