@@ -1,11 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class AppleTreeManager : MonoBehaviour
 {
+    [Header(" Elements ")] 
+    [SerializeField] private Slider ShakeSlider;
+    
     [Header(" Settings ")] 
     private AppleTree LastTriggeredTree;
 
@@ -37,8 +39,17 @@ public class AppleTreeManager : MonoBehaviour
 
     private void StartTreeMode()
     {
+        LastTriggeredTree.Initialize(this);
         LastTriggeredTree.EnableCam();
         
         onTreeModeStarted?.Invoke(LastTriggeredTree);
+        
+        //Initialize the slider
+        UpdateShakeSlider(0);
+    }
+
+    public void UpdateShakeSlider(float value)
+    {
+        ShakeSlider.value = value;
     }
 }

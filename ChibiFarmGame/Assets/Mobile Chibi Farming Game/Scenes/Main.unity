@@ -1115,7 +1115,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.38949913, y: 0.000000015847533, z: -0.0000000067018684, w: 0.9210268}
+  m_LocalRotation: {x: 0.38949913, y: -0.000000015847544, z: 0.000000006701873, w: 0.9210268}
   m_LocalPosition: {x: 0, y: 13, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1961,7 +1961,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416656960}
-  m_LocalRotation: {x: 0.38949913, y: 0.000000015847533, z: -0.0000000067018684, w: 0.9210268}
+  m_LocalRotation: {x: 0.38949913, y: -0.000000015847544, z: 0.000000006701873, w: 0.9210268}
   m_LocalPosition: {x: 0, y: 13, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6998,6 +6998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871bc01bca2f3eb438a6a78e859466b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShakeSlider: {fileID: 1078749326}
 --- !u!1 &591942670
 GameObject:
   m_ObjectHideFlags: 0
@@ -24277,6 +24278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treeCam: {fileID: 681960278}
   TreeMeshObj: {fileID: 904968355}
+  shakeIncrement: 0.01
 --- !u!135 &3601834606932651412
 SphereCollider:
   m_ObjectHideFlags: 0
