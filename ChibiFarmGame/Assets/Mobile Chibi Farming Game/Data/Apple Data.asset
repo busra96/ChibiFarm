@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e389069fbd648469bb0921c6af7ee2, type: 3}
   m_Name: Apple Data
   m_EditorClassIdentifier: 
-  cropPrefab: {fileID: 0}
+  cropPrefab: {fileID: 3958399712126161961, guid: ae552fbcd2d6c154f9e156b7f4cd2998,
+    type: 3}
   cropType: 2
   icon: {fileID: 21300000, guid: 108faa4932fb57e4087d90a182b0ce15, type: 3}
   price: 5

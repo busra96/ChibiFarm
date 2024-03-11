@@ -24,8 +24,6 @@ public class Apple : MonoBehaviour
         Player = FindObjectOfType<PlayerHarvestAbility>().transform;
     }
 
-
-
     public bool IsFree()
     {
         return !_rb.isKinematic;
