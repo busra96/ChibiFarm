@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
@@ -68,6 +69,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetLayerWeight(3,0);
     }
 
+    [Button()]
     public void PlayShakeTreeAnimation()
     {
         animator.SetLayerWeight(4,1);

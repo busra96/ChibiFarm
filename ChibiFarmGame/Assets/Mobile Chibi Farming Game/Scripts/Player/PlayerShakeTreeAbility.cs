@@ -12,9 +12,11 @@ public class PlayerShakeTreeAbility : MonoBehaviour
     [SerializeField ]private float shakeThreshold;
     private bool isActive;
     private Vector2 previousMousePosition;
+    private bool isShaking;
     
     [Header(" Elements ")] 
     private AppleTree currentTree;
+    
     
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class PlayerShakeTreeAbility : MonoBehaviour
 
     private void Update()
     {
-        if(isActive)
+        if(isActive && !isShaking)
            ManageTreeShaking();
     }
 
@@ -60,20 +62,32 @@ public class PlayerShakeTreeAbility : MonoBehaviour
 
     private void ManageTreeShaking()
     {
-        if(!Input.GetMouseButton(0))
+        if (!Input.GetMouseButton(0))
+        {
+            currentTree.StopShaking();
             return;
+        }
+          
 
         float shakeMagnitude = Vector2.Distance(Input.mousePosition, previousMousePosition);
 
         if (ShouldShake(shakeMagnitude))
             Shake();
+        else
+             currentTree.StopShaking();
         
         previousMousePosition = Input.mousePosition;
     }
 
     private void Shake()
     {
+        isShaking = true;
+
+        currentTree.Shake();
+        
         playerAnimator.PlayShakeTreeAnimation();
+
+        LeanTween.delayedCall(.1f, () => isShaking = false);
     }
     
     private bool ShouldShake(float shakeMagnitude)
