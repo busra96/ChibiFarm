@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         Vector3 moveVector = joystick.GetMoveVector() * moveSpeed * Time.deltaTime / Screen.width;
 
         moveVector.z = moveVector.y;
-        moveVector.y = -1;
+        moveVector.y = 0;
         
         characterController.Move(moveVector);
 
