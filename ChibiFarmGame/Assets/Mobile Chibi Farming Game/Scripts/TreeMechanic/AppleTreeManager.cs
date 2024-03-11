@@ -33,8 +33,14 @@ public class AppleTreeManager : MonoBehaviour
     public void TreeButtonCallback()
     {
         Debug.Log(" Tree button click ");
-       
 
+        if (!LastTriggeredTree.IsReady())
+        {
+            Debug.Log(" Not ready ");
+            return;
+        }
+          
+        
         StartTreeMode();
     }
 

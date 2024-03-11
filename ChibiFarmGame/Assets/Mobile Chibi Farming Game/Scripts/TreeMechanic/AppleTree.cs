@@ -20,9 +20,6 @@ public class AppleTree : MonoBehaviour
     private Tween ShakingTween;
     private bool AllApplesFallDown;
 
-    [Header(" Actions ")] 
-    public static Action<CropType> onAppleHarvested;
-
 
     public void Initialize(AppleTreeManager appleTreeManager)
     {
@@ -60,6 +57,15 @@ public class AppleTree : MonoBehaviour
         
         TreeMeshObj.transform.DOLocalRotate(new Vector3(0,50,0), .5f).SetEase(Ease.Linear);
     }
+
+    public bool IsReady()
+    {
+        for (int i = 0; i < Apples.Count; i++)
+            if (!Apples[i].IsReady())
+                return false;
+
+        return true;
+    }
     
     private void UpdateShakeSlider()
     {
@@ -88,13 +94,23 @@ public class AppleTree : MonoBehaviour
         DisableCam();
 
        LeanTween.delayedCall(.1f, ()=>  StopShaking());
+
+       ResetApples();
     }
+
+    private void ResetApples()
+    {
+        for (int i = 0; i < Apples.Count; i++)
+            Apples[i].Reset();
+
+        LeanTween.delayedCall(1, () => AllApplesFallDown = false);
+    }
+    
+    
 
     private void ReleaseApple(Apple apple)
     {
         apple.Release();
-        
-        //onAppleHarvested?.Invoke(CropType.Apple);
     }
 
     
