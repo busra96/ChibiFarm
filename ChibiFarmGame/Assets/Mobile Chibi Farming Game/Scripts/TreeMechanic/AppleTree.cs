@@ -16,6 +16,7 @@ public class AppleTree : MonoBehaviour
     private float shakeSliderValue;
     private bool isShaking;
     private Tween ShakingTween;
+    private bool AllApplesFallDown;
 
 
     public void Initialize(AppleTreeManager appleTreeManager)
@@ -30,6 +31,9 @@ public class AppleTree : MonoBehaviour
     [Button()]
     public void Shake()
     {
+        if(AllApplesFallDown)
+            return;
+        
         UpdateShakeSlider();
         
         if(isShaking)
@@ -39,17 +43,16 @@ public class AppleTree : MonoBehaviour
         ShakingTween = TreeMeshObj.transform.DOShakeRotation(duration: .5f, strength: 2.5f, vibrato: 2, randomness: 60, fadeOut: true).SetLoops(-1,LoopType.Restart);
     }
 
-    
-
     public void StopShaking()
     {
         if(!isShaking)
             return;
 
         isShaking = false;
+        
         if(ShakingTween != null)
             ShakingTween.Kill();
-
+        
         TreeMeshObj.transform.DOLocalRotate(new Vector3(0,50,0), .5f).SetEase(Ease.Linear);
     }
     
@@ -67,6 +70,19 @@ public class AppleTree : MonoBehaviour
             if (shakeSliderValue > applePercent && !currentApple.IsFree())
                 ReleaseApple(currentApple);
         }
+
+        if (shakeSliderValue >= 1)
+            ExitTreeMode();
+    }
+
+    private void ExitTreeMode()
+    {
+        AllApplesFallDown = true;
+        treeManager.EndTreeMode();
+        
+        DisableCam();
+
+       LeanTween.delayedCall(.1f, ()=>  StopShaking());
     }
 
     private void ReleaseApple(Apple apple)

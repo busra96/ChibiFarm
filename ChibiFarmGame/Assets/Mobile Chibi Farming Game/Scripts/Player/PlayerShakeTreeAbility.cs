@@ -22,11 +22,13 @@ public class PlayerShakeTreeAbility : MonoBehaviour
     {
         playerAnimator = GetComponent<PlayerAnimator>();
         AppleTreeManager.onTreeModeStarted += TreeModeStartedCallback;
+        AppleTreeManager.onTreeModeSEnded += TreeModeEndedCallback;
     }
 
     private void OnDestroy()
     {
         AppleTreeManager.onTreeModeStarted -= TreeModeStartedCallback;
+        AppleTreeManager.onTreeModeSEnded -= TreeModeEndedCallback;
     }
 
     private void Update()
@@ -42,6 +44,17 @@ public class PlayerShakeTreeAbility : MonoBehaviour
         isActive = true;
         
         MoveTowardsTree();
+    }
+    
+    private void TreeModeEndedCallback()
+    {
+        currentTree = null;
+
+        isActive = false;
+
+        isShaking = false;
+        
+       LeanTween.delayedCall(.1f, ()=> playerAnimator.StopShakeTreeAnimation());
     }
 
     private void MoveTowardsTree()

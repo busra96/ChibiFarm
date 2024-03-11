@@ -13,6 +13,7 @@ public class AppleTreeManager : MonoBehaviour
 
     [Header(" Actions ")] 
     public static Action<AppleTree> onTreeModeStarted;
+    public static Action  onTreeModeSEnded;
 
     private void Awake()
     {
@@ -51,5 +52,10 @@ public class AppleTreeManager : MonoBehaviour
     public void UpdateShakeSlider(float value)
     {
         ShakeSlider.value = value;
+    }
+
+    public void EndTreeMode()
+    {
+     onTreeModeSEnded?.Invoke();   
     }
 }

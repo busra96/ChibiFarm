@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
         PlayerDetection.onExitedTreeZone += ExitedTreeZoneCallback;
 
         AppleTreeManager.onTreeModeStarted += SetTreeMode;
+        AppleTreeManager.onTreeModeSEnded += SetGameMode;
     }
 
     private void OnDestroy()
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
         PlayerDetection.onExitedTreeZone -= ExitedTreeZoneCallback;
         
         AppleTreeManager.onTreeModeStarted -= SetTreeMode;
+        AppleTreeManager.onTreeModeSEnded -= SetGameMode;
     }
 
     // Start is called before the first frame update

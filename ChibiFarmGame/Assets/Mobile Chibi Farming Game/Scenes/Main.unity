@@ -25221,7 +25221,7 @@ MonoBehaviour:
   - {fileID: 1967460110}
   - {fileID: 972665850}
   - {fileID: 318434247}
-  shakeIncrement: 0.01
+  shakeIncrement: 0.025
 --- !u!135 &3601834606932651412
 SphereCollider:
   m_ObjectHideFlags: 0
