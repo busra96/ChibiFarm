@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class AppleTree : MonoBehaviour
     [SerializeField] private GameObject treeCam;
     [SerializeField] private GameObject TreeMeshObj;
     private AppleTreeManager treeManager;
+    public List<Apple> Apples;
 
     [Header(" Settings ")] 
     [SerializeField] private float shakeIncrement;
@@ -55,8 +57,24 @@ public class AppleTree : MonoBehaviour
     {
         shakeSliderValue += shakeIncrement;
         treeManager.UpdateShakeSlider(shakeSliderValue);
+
+        for (int i = 0; i <  Apples.Count; i++)
+        {
+            float applePercent = (float)i / Apples.Count;
+
+            Apple currentApple = Apples[i].GetComponent<Apple>();
+
+            if (shakeSliderValue > applePercent && !currentApple.IsFree())
+                ReleaseApple(currentApple);
+        }
     }
 
+    private void ReleaseApple(Apple apple)
+    {
+        apple.Release();
+    }
+
+    
     public void EnableCam()
     {
         treeCam.SetActive(true);
