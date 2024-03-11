@@ -2,7 +2,8 @@
 public enum CropType
 {
     Corn,
-    Tomato
+    Tomato,
+    Apple
 }
 
 public enum TieldFieldState 

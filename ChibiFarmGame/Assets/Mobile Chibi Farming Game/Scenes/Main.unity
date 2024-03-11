@@ -1202,7 +1202,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.38949913, y: -0.000000015847544, z: 0.000000006701873, w: 0.9210268}
+  m_LocalRotation: {x: 0.38949913, y: 0.000000015847533, z: -0.0000000067018684, w: 0.9210268}
   m_LocalPosition: {x: 0, y: 13, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1485,7 +1485,7 @@ GameObject:
   - component: {fileID: 377347274}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2048,7 +2048,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416656960}
-  m_LocalRotation: {x: 0.38949913, y: -0.000000015847544, z: 0.000000006701873, w: 0.9210268}
+  m_LocalRotation: {x: 0.38949913, y: 0.000000015847533, z: -0.0000000067018684, w: 0.9210268}
   m_LocalPosition: {x: 0, y: 13, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20772,6 +20772,7 @@ MonoBehaviour:
   cropData:
   - {fileID: 11400000, guid: 842e1b1bfc7aa2f47a92940ef1cbff22, type: 2}
   - {fileID: 11400000, guid: ce1d12772eef6584e846538ba0202e3e, type: 2}
+  - {fileID: 11400000, guid: afe47c215e6ab434fa6f92e19ae6e720, type: 2}
 --- !u!1 &1669449154
 GameObject:
   m_ObjectHideFlags: 0
@@ -25209,6 +25210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treeCam: {fileID: 681960278}
   TreeMeshObj: {fileID: 904968355}
+  ApplesParent: {fileID: 737676097}
   Apples:
   - {fileID: 2243715168183133019}
   - {fileID: 1968819179}
@@ -25318,7 +25320,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apple
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431202147111544832, guid: ae552fbcd2d6c154f9e156b7f4cd2998, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ae552fbcd2d6c154f9e156b7f4cd2998, type: 3}
 --- !u!4 &3614740252884282962
 Transform:

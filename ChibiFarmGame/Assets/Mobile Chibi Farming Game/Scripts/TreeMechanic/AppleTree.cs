@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
+using System;
 
 public class AppleTree : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class AppleTree : MonoBehaviour
     [SerializeField] private GameObject treeCam;
     [SerializeField] private GameObject TreeMeshObj;
     private AppleTreeManager treeManager;
+    public Transform ApplesParent;
     public List<Apple> Apples;
 
     [Header(" Settings ")] 
@@ -17,6 +19,9 @@ public class AppleTree : MonoBehaviour
     private bool isShaking;
     private Tween ShakingTween;
     private bool AllApplesFallDown;
+
+    [Header(" Actions ")] 
+    public static Action<CropType> onAppleHarvested;
 
 
     public void Initialize(AppleTreeManager appleTreeManager)
@@ -88,6 +93,8 @@ public class AppleTree : MonoBehaviour
     private void ReleaseApple(Apple apple)
     {
         apple.Release();
+        
+        //onAppleHarvested?.Invoke(CropType.Apple);
     }
 
     
